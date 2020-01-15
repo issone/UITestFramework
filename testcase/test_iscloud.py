@@ -1,6 +1,3 @@
-import json
-import time
-import os
 import allure
 import pytest
 
@@ -22,7 +19,7 @@ class TestISCloud(object):
        '''
 
     def setup_class(self):  # 执行前运行一次
-        self.driver = WebDriver()
+        self.driver = WebDriver(headless=HEADLESS)
 
     def teardown_class(self):  # 执行完毕后运行一次
         self.driver.quit()
@@ -42,7 +39,7 @@ class TestISCloud(object):
     @allure.feature('修改密码测试')
     @allure.story('修改密码')
     @allure.title('修改测试')
-    @pytest.mark.skip(reason="修改密码已测试完毕")   # 跳过测试用例
+    @pytest.mark.skip(reason="修改密码已测试完毕")  # 跳过测试用例
     def test_modify_pwd(self):
 
         page = ModifyPwdPage(self.driver)
@@ -73,7 +70,7 @@ class TestISCloud(object):
     @allure.feature('资源池测试')
     @allure.story('修改')
     @allure.title('修改资源池')
-    @pytest.mark.skip(reason="测试完毕")
+    # @pytest.mark.skip(reason="测试完毕")
     def test_update_vpool(self):
         page = VPoolPage(self.driver)
         page.into_vpool()

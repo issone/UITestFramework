@@ -1,3 +1,5 @@
+
+HEADLESS = True    # 是否开启无头模式（chrome\firefox）
 LOGIN_URL = 'http://192.168.163.194:9999'  # 登录地址
 USERNAME = 'admin'  # 登录账号
 PASSWORD = 'q1234567'  # 登录密码

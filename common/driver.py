@@ -29,16 +29,22 @@ LOCATOR_LIST = {
 
 class WebDriver:
 
-    def __init__(self, driver_name=None, driver_path=None, timeout=10):
+    def __init__(self, driver_name=None, driver_path=None, timeout=10, headless=False):
         driver = None
         if driver_path is None:
             driver_path = os.path.join(BASE_PATH, 'utils', 'chromedriver.exe')
         if driver_name is None:
             driver_name = "chrome"
         if driver_name == "chrome":
-            driver = webdriver.Chrome(executable_path=driver_path)
+            options = webdriver.ChromeOptions()
+            if headless:
+                options.add_argument('--headless')
+            driver = webdriver.Chrome(executable_path=driver_path, options=options)
         elif driver_name == 'firefox':
-            driver = webdriver.Firefox(executable_path=driver_path)
+            options = webdriver.FirefoxOptions()
+            if headless:
+                options.add_argument('--headless')
+            driver = webdriver.Firefox(executable_path=driver_path, options=options)
         elif driver_name == 'ie':
             driver = webdriver.Ie()
         elif driver_path == 'edge':

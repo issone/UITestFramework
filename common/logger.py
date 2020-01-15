@@ -8,7 +8,7 @@ from config.log_config import LOG_DIR, LOGGING_DIC
 
 class Logger(object):
 
-    def __init__(self, logger_name=None):
+    def __init__(self, logger_name='default'):
         """
        1. 如果不传logger_name，则根据__name__去loggers里查找__name__对应的logger配置(__name__为调用文件名)
        获取logger对象通过方法logging.getLogger(__name__)，不同的文件__name__不同，这保证了打印日志时标识信息不同，
